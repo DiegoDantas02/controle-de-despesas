@@ -42,6 +42,7 @@ h4 {
 }
 
 .inc-exp-container {
+  /* background: linear-gradient(to bottom, #3dd61b, #c0392b); */
   background-color: #fff;
   box-shadow: var(--box-shadow);
   padding: 20px;
@@ -49,10 +50,16 @@ h4 {
   justify-content: space-between;
   margin: 20px 0;
 }
-
+/* .cor-receitas{
+  background: #c0392b;
+}
+.cor-despesas{
+  background: #3dd61b;
+} */
 .inc-exp-container > div {
   flex: 1;
   text-align: center;
+  
 }
 
 .inc-exp-container > div:first-of-type {
@@ -66,7 +73,7 @@ h4 {
 }
 
 .money.plus {
-  color: #2ecc71;
+  color:#3dd61b;
 }
 
 .money.minus {
