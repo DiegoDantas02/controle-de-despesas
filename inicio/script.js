@@ -23,6 +23,7 @@ const addTransactionIntoDOM = transaction => {
 
 const updateBalanceValues = () => {
     const transactionAmounts = dummyTransactions.map(transactions => transaction.amount)
+    const total = transactionAmounts.reduce((accumulator,transaction) => accumulator + transaction, 0)
 }
 const init = () => {
     dummyTransactions.forEach(addTransactionIntoDOM)
