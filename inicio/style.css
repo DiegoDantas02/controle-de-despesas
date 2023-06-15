@@ -90,8 +90,8 @@ input[type='number'] {
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
   box-shadow: var(--box-shadow);
+  background-color: black;
   color: #fff;
   border: 0;
   display: block;
@@ -99,6 +99,18 @@ input[type='number'] {
   margin: 10px 0 30px;
   padding: 10px;
   width: 100%;
+  
+}
+.meu-botao {
+  background-color: #3dd61b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.meu-botao:hover {
+  background-color: #333;
 }
 
 .btn:focus,
@@ -150,3 +162,54 @@ input[type='number'] {
 .transactions li:hover .delete-btn {
   opacity: 1;
 }
+/* cabeçalho */
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: black;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      color: white;
+      padding: 5px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+    }
+    
+    header img {
+      height: 40px;
+      width: 130px;
+    }
+    
+    header .buttons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    header .buttons a {
+      background-color: black;
+      color: white;
+      padding: 5px 10px;
+      text-decoration: none;
+    }
+    
+    header .buttons a:hover {
+      background-color: #333;
+    }
+    
+    header .buttons a:last-child {
+      background-color: red;
+    }
+ /* footer */
+ footer {
+  background-color: black;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+/* botão */
+
