@@ -2,6 +2,10 @@ const transactionsUl = document.querySelector('#transactions');
 const incomeDisplay = document.querySelector('#money-plus')
 const expenseDisplay = document.querySelector('#money-minus')
 const balanceDisplay = document.querySelector('#balance')
+const form = document.querySelector('#form')
+const inputTransactionName = document.querySelector('#text')
+const inputTransactionAmount = document.querySelector('#amount')
+
 const dummyTransactions = [
     { id: 1, name: 'Bolo de brigadeiro', amount: -20 },
     { id: 2, name: 'Salário', amount: 300 },
@@ -33,7 +37,8 @@ const updateBalanceValues = () => {
         .filter(value => value > 0) 
         .reduce((accumulator,value) => accumulator + value, 0)
         .ToFixed(2)
-        const expense = transactionAmounts.filter(value => value < 0)
+        const expense = Math.abs(transactionAmounts)
+        .filter(value => value < 0)
         .reduce((accumulator,value) => accumulator + value ,0)
         .ToFixed(2)
 
@@ -47,3 +52,18 @@ const init = () => {
     updateBalanceValues()
 }
 init()
+const generateID = () => Math.round(Math.random() * 1000 )
+
+form.addEventListener('submit', event =>{
+    event.preventDefault()
+
+    const transactionName = inputTransactionName.value.trim()
+    const transactionAmount = inputTransactionAmount.value.trim()
+
+    if(inputTransactionName.value.trim() == '' || inputTransactionAmount.value.trim() === ''){
+        alert('Por favor, Preenchatanto o nome quanto o VALOR DA TRANSAÇÃO')
+        return;
+    }
+    const transaction = { id: 1, name:  transactionName, amount: transactionAmount}
+
+})
