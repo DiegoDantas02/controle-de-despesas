@@ -6,15 +6,19 @@ const form = document.querySelector('#form');
 const inputTransactionName = document.querySelector('#text');
 const inputTransactionAmount = document.querySelector('#amount');
 
-let dummyTransactions = [
-    { id: 1, name: 'Bolo de brigadeiro', amount: -20 },
-    { id: 2, name: 'Salário', amount: 300 },
-    { id: 3, name: 'Torta de frango', amount: -10 },
-    { id: 4, name: 'Violão', amount: 150 }
-];
+// let transaction = [
+//     { id: 1, name: 'Bolo de brigadeiro', amount: -20 },
+//     { id: 2, name: 'Salário', amount: 300 },
+//     { id: 3, name: 'Torta de frango', amount: -10 },
+//     { id: 4, name: 'Violão', amount: 150 }
+// ];
+
+const localStorageTransactions = JSON.parse(localStorage.getItem('transactions');
+let transaction = localStorage.getItem('transactions') !== null? localStorageTransactions : []
+
 const removeTransaction = ID => {
     // Remove a transação pelo seu ID e atualiza o DOM
-    dummyTransactions = dummyTransactions.filter(transaction => transaction.id !== ID)
+    transaction = transaction.filter(transaction => transaction.id !== ID)
     init()
 }
 
@@ -33,7 +37,7 @@ const addTransactionIntoDOM = transaction => {
 };
 
 const updateBalanceValues = () => {
-    const transactionAmounts = dummyTransactions.map(transaction => transaction.amount);
+    const transactionAmounts = transaction.map(transaction => transaction.amount);
     const total = transactionAmounts.reduce((accumulator, transaction) => accumulator + transaction, 0).toFixed(2);
     const income = transactionAmounts.filter(value => value > 0).reduce((accumulator, value) => accumulator + value, 0).toFixed(2);
     const expense = Math.abs(transactionAmounts.filter(value => value < 0).reduce((accumulator, value) => accumulator + value, 0)).toFixed(2);
@@ -45,7 +49,7 @@ const updateBalanceValues = () => {
 
 const init = () => {
     transactionsUl.innerHTML = '';
-    dummyTransactions.forEach(addTransactionIntoDOM);
+    transaction.forEach(addTransactionIntoDOM);
     updateBalanceValues();
 };
 
@@ -70,7 +74,7 @@ form.addEventListener('submit', event => {
         amount: Number(transactionAmount)
     };
 
-    dummyTransactions.push(transaction);
+    transaction.push(transaction);
     init();
 
     inputTransactionName.value = '';
