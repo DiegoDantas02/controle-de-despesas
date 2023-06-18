@@ -6,77 +6,82 @@ const form = document.querySelector('#form');
 const inputTransactionName = document.querySelector('#text');
 const inputTransactionAmount = document.querySelector('#amount');
 
-// let transaction = [
-//     { id: 1, name: 'Bolo de brigadeiro', amount: -20 },
-//     { id: 2, name: 'Salário', amount: 300 },
-//     { id: 3, name: 'Torta de frango', amount: -10 },
-//     { id: 4, name: 'Violão', amount: 150 }
-// ];
+let transactions = [];
 
-const localStorageTransactions = JSON.parse(localStorage.getItem('transactions');
-let transaction = localStorage.getItem('transactions') !== null? localStorageTransactions : []
+const fetchTransactions = () => {
+  const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
+  transactions = localStorageTransactions || [];
+};
 
-const removeTransaction = ID => {
-    // Remove a transação pelo seu ID e atualiza o DOM
-    transaction = transaction.filter(transaction => transaction.id !== ID)
-    init()
-}
+const saveTransactionsToLocalStorage = () => {
+  localStorage.setItem('transactions', JSON.stringify(transactions));
+};
 
-const addTransactionIntoDOM = transaction => {
-    const operator = transaction.amount < 0 ? '-' : '+';
-    const CSSClass = transaction.amount < 0 ? 'minus' : 'plus';
-    const amountWithoutOperator = Math.abs(transaction.amount);
-    const li = document.createElement('li');
+const removeTransaction = (id) => {
+  transactions = transactions.filter(transaction => transaction.id !== id);
+  init();
+  saveTransactionsToLocalStorage();
+};
 
-    li.classList.add(CSSClass);
-    li.innerHTML = `
-        ${transaction.name} <span>${operator} R$ ${amountWithoutOperator}</span><button class="delete-btn" onClick="removeTransaction($transaction.id})">x</button>
-    `;
+const addTransactionIntoDOM = (transaction) => {
+  const operator = transaction.amount < 0 ? '-' : '+';
+  const CSSClass = transaction.amount < 0 ? 'minus' : 'plus';
+  const amountWithoutOperator = Math.abs(transaction.amount);
+  const li = document.createElement('li');
 
-    transactionsUl.append(li);
+  li.classList.add(CSSClass);
+  li.innerHTML = `
+    ${transaction.name} <span>${operator} R$ ${amountWithoutOperator}</span><button class="delete-btn" onClick="removeTransaction(${transaction.id})">x</button>
+  `;
+
+  transactionsUl.appendChild(li);
 };
 
 const updateBalanceValues = () => {
-    const transactionAmounts = transaction.map(transaction => transaction.amount);
-    const total = transactionAmounts.reduce((accumulator, transaction) => accumulator + transaction, 0).toFixed(2);
-    const income = transactionAmounts.filter(value => value > 0).reduce((accumulator, value) => accumulator + value, 0).toFixed(2);
-    const expense = Math.abs(transactionAmounts.filter(value => value < 0).reduce((accumulator, value) => accumulator + value, 0)).toFixed(2);
+  const transactionAmounts = transactions.map(transaction => transaction.amount);
+  const total = transactionAmounts.reduce((accumulator, transaction) => accumulator + transaction, 0).toFixed(2);
+  const income = transactionAmounts.filter(value => value > 0).reduce((accumulator, value) => accumulator + value, 0).toFixed(2);
+  const expense = Math.abs(transactionAmounts.filter(value => value < 0).reduce((accumulator, value) => accumulator + value, 0)).toFixed(2);
 
-    balanceDisplay.textContent = `R$ ${total}`;
-    incomeDisplay.textContent = `R$ ${income}`;
-    expenseDisplay.textContent = `R$ ${expense}`;
+  balanceDisplay.textContent = `R$ ${total}`;
+  incomeDisplay.textContent = `R$ ${income}`;
+  expenseDisplay.textContent = `R$ ${expense}`;
 };
 
 const init = () => {
-    transactionsUl.innerHTML = '';
-    transaction.forEach(addTransactionIntoDOM);
-    updateBalanceValues();
+  transactionsUl.innerHTML = '';
+  transactions.forEach(addTransactionIntoDOM);
+  updateBalanceValues();
 };
-
-init();
 
 const generateID = () => Math.round(Math.random() * 1000);
 
-form.addEventListener('submit', event => {
-    event.preventDefault();
+const handleFormSubmit = (event) => {
+  event.preventDefault();
 
-    const transactionName = inputTransactionName.value.trim();
-    const transactionAmount = inputTransactionAmount.value.trim();
+  const transactionName = inputTransactionName.value.trim();
+  const transactionAmount = inputTransactionAmount.value.trim();
 
-    if (transactionName === '' || transactionAmount === '') {
-        alert('Por favor, preencha tanto o nome quanto o valor da transação.');
-        return;
-    }
+  if (transactionName === '' || transactionAmount === '') {
+    alert('Por favor, preencha tanto o nome quanto o valor da transação.');
+    return;
+  }
 
-    const transaction = {
-        id: generateID(),
-        name: transactionName,
-        amount: Number(transactionAmount)
-    };
+  const transaction = {
+    id: generateID(),
+    name: transactionName,
+    amount: Number(transactionAmount)
+  };
 
-    transaction.push(transaction);
-    init();
+  transactions.push(transaction);
+  init();
+  saveTransactionsToLocalStorage();
 
-    inputTransactionName.value = '';
-    inputTransactionAmount.value = '';
-});
+  inputTransactionName.value = '';
+  inputTransactionAmount.value = '';
+};
+
+form.addEventListener('submit', handleFormSubmit);
+
+fetchTransactions();
+init();
