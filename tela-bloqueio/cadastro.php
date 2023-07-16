@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="../02cadastroProdutos/img/favico.png" type="image/x-icon">
 </head>
 <div>
-    <img src="../img-login/logo.png" alt="imagem do logo da empresa" class="logo">
+    <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo">
 
 </div>
 

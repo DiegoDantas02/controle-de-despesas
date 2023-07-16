@@ -95,10 +95,10 @@
 
 <body>
     <a href="../02cadastroProdutos/pastas de redirecionamentos/index.php">
-    <img src="../img-login/logo.png" alt="imagem do logo da empresa" class="logo">
+    <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo">
     </a>
     <div class="container">
-        <h1>LOGIN</h1>
+        <h1>LOGIN</h1>  
 <br><br>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($username === "usuario" && $password === "senha") {
         echo "<p>Login realizado com sucesso!</p>";
         // Redireciona para a página desejada após o login bem-sucedido
-        header("Location: login.php");
+        header("Location: index.html");
         exit; // Termina a execução do script para evitar que o restante do código seja executado
     } else {
         echo "<p>Nome de usuário ou senha inválidos!</p>";
@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="password" name="password" placeholder="Senha" required>
     <br>
     <br>
-    <button type="submit">Entrar</button>
+    <button type="submit">Entrar<a></button>
 </form>
 
 <p>Ainda não tem uma conta? <a href="cadastro.php">Cadastrar-se</a></p>
