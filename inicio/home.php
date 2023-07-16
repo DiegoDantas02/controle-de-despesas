@@ -18,7 +18,7 @@
   <header>
     <img src="../img/logo.png" alt="Logo">
     <div class="buttons">
-      <a href="../inicio/index.html" >Início</a>
+      <a href="../inicio/home.php" >Ihomnício</a>
       <a href="../tela-bloqueio/login.php">Sair</a>
     </div>
   </header>
@@ -68,12 +68,4 @@
     </div>
 
     <script src="script.js"></script>
-
-<!-- ------inicio rodapé ---------- -->
-    <footer>
-    <p> &copy; 2023 Software De Finanças - Desenvolvido por 🤍 <a href="mailto:diegorodriguesdantas02@gmail.com" style="text-decoration: none; color: green;">Diego Dantas</a></p>
-</footer>
-</body>
-
-</html>
-<!-- ------Fim do rodapé -->
+<?php include "../inc/rodape.php";?>
