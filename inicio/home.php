@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,25 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <title>Controle de despesas</title>
 </head>
 
-<!-- inicio cabeçalho -->
-
-</head>
 <body>
-  <header>
-    <img src="../img/logo.png" alt="Logo">
-    <div class="buttons">
-      <a href="../inicio/home.php" >Ihomnício</a>
-      <a href="../tela-bloqueio/login.php">Sair</a>
-    </div>
-  </header>
-<!-- Fim do cabeçalho -->
+    <?php include 'header.php'; ?>
 
-<body>
     <h2>Controle de despesas</h2>
 
     <div class="container">
@@ -68,4 +56,8 @@
     </div>
 
     <script src="script.js"></script>
-<?php include "../inc/rodape.php";?>
+
+    <?php include 'footer.php'; ?>
+</body>
+
+</html>

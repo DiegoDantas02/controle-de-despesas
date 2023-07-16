@@ -94,7 +94,7 @@
 </head>
 
 <body>
-    <a href="../02cadastroProdutos/pastas de redirecionamentos/index.php">
+    <a href="../inicio//home.html">
     <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo">
     </a>
     <div class="container">
