@@ -9,7 +9,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            background-image: url(../img-login/mesa.png);
+            background-image: url(../img/mesa.png);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

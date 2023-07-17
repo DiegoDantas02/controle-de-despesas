@@ -12,7 +12,7 @@
 </div>
 
 <body>
-<script>
+<!-- <script>
         // Aplica a máscara de entrada
         var phoneInput = document.getElementById("phone-input");
         phoneInput.addEventListener("input", function () {
@@ -31,12 +31,12 @@
             // Atualiza o valor do campo de entrada
             phoneInput.value = value;
         });
-    </script>
+    </script> -->
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url(../img-login/contabilidade.png);
+            background-image: url(../img/contabilidade.png);
             background-size: cover;
             background-repeat: no-repeat;
             overflow: hidden;

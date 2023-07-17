@@ -17,7 +17,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            background-image: url(../img-login/doisboss.png);
+            background-image: url(../img/doisboss.png);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
