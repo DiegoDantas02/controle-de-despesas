@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include "../inc/header.php"; ?>
+    <?php include "../inc/conexao.php";?>
 
     <h2>Controle de despesas</h2>
 
@@ -57,7 +58,7 @@
 
     <script src="script.js"></script>
 
-    <?php include 'footer.php'; ?>
+    <?php include "../inc/footer.php"; ?>
 </body>
 
 </html>
