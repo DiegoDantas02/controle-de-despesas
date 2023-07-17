@@ -100,26 +100,9 @@
     <div class="container">
         <h1>LOGIN</h1>  
 <br><br>
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
 
-    // Faça a validação e o processamento do formulário aqui
 
-    // Exemplo de verificação simples (apenas para fins ilustrativos)
-    if ($username === "usuario" && $password === "senha") {
-        echo "<p>Login realizado com sucesso!</p>";
-        // Redireciona para a página desejada após o login bem-sucedido
-        header("Location: index.html");
-        exit; // Termina a execução do script para evitar que o restante do código seja executado
-    } else {
-        echo "<p>Nome de usuário ou senha inválidos!</p>";
-    }
-}
-?>
-
-<form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+<form method="POST" action="../tela-bloqueio/validar.php">
     <P class="desc1">Nome de Usuário:</P>
     <input type="text" name="username" placeholder="Nome de usuário" required>
     <br>
@@ -132,7 +115,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <p>Ainda não tem uma conta? <a href="cadastro.php">Cadastrar-se</a></p>
 
+<?php include ('../inc/conexao.php');
 
+if(isset($_POST['email']) || isset($_POST['senha'])){
+
+if(strlen($_POST['email']) == 0){
+    echo "Preencha seu e-mail!";
+}else if(strlen($_POST['senha']) == 0){
+    echo "Preencha sua senha";
+}else {
+    $email = $myqli->real_escape_sting($_POST['email']);
+    $senha = $myqli->real_escape_sting($_POST['senha']);
+
+    $sql_code = "SELECT * FROM usuarios WHERE email = '$email'AND senha = '$senha'";
+    $sql_query->query($sql_code) or die("Falha na execução do código SQL: " . $myqli->error);
+    
+    $quantidade = $sql_query->num_rows;
+
+    if($quantidade == 1){
+        $usuario = $myqli_quey->fetch_assoc();
+
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        $_SESSION['user'] = $usuario ['id'];
+        $_SESSION['name'] = $usuario['nome']
+    }else{ echo "Falha ao logar! E-mail ou Senha incorretos"} }
+}
+?>
 </body>
-
 </html>

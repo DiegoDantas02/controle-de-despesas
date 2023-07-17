@@ -1,8 +1,9 @@
 <?php
-$bd_usuario= "root";
-$bd_senha= "";
-$bd_servidor= "localhost";
-$bd_banco= "projeto_software";
+$usuario= "root";
+$senha= "";
+$database= "projeto_software";
+$host = "localhost";
 
-$conexao = mysqli_connect($bd_servidor, $bd_usuario, $bd_senha, $bd_banco);
+$conexao = mysqli_connect($host, $usuario,$senha,$database);
+
 ?>
