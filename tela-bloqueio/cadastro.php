@@ -1,12 +1,14 @@
 <?php include "../inc/header.php";?>
 <?php include "../inc/conexao.php";?>
 <div>
-    <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo">
+    <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo" hrel="../">
 
 </div>
-<link rel="stylesheet" href="cadastro.css">
+<head>
+
 <body>
-<!-- <script>
+<link rel="stylesheet" href="../css/cadastro.css">
+<script>
         // Aplica a máscara de entrada
         var phoneInput = document.getElementById("phone-input");
         phoneInput.addEventListener("input", function () {
@@ -25,10 +27,10 @@
             // Atualiza o valor do campo de entrada
             phoneInput.value = value;
         });
-    </script> -->
+    </script>
     </head>
-
     <body>
+        
         <div class="container">
 
             <h1 style="color:#45a049"> <strong>CADASTRO</strong> </h1>

@@ -70,11 +70,11 @@ body {
 }
 
 .logo {
-    position: flex;
+    position: absolute;
     top: 20px;
     left: 20px;
     width: 200px;
-
+    cursor: pointer;
 }
 
 .phone-input {
