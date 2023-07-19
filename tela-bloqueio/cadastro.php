@@ -1,7 +1,10 @@
 <?php include "../inc/header.php";?>
 <?php include "../inc/conexao.php";?>
 <div>
-    <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo" hrel="../">
+<a href="../tela-bloqueio/login.php">
+    <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo">
+</a>
+
 
 </div>
 <head>
