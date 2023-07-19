@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-    <title>Controle de despesas</title>
-</head>
+<?php include "../inc/header.php"; ?>
+<?php include "../inc/conexao.php"; ?>
 
 <body>
-    <?php include "../inc/header.php"; ?>
-    <?php include "../inc/conexao.php";?>
 
-    <h2>Controle de despesas</h2>
+            <h2>Controle de despesas</h2>
 
     <div class="container">
         <h4>Saldo atual</h4>
@@ -33,11 +22,11 @@
             </div>
         </div>
 
-        <h3>Transações</h3>
+                <h3>Transações</h3>
 
         <ul id="transactions" class="transactions"></ul>
 
-        <h3>Adicionar transação</h3>
+                <h3>Adicionar transação</h3>
 
         <form id="form">
             <div class="form-control">
@@ -57,8 +46,4 @@
     </div>
 
     <script src="script.js"></script>
-
     <?php include "../inc/footer.php"; ?>
-</body>
-
-</html>
