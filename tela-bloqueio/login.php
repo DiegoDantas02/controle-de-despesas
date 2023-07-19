@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="../02cadastroProdutos/img/favico.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../02cadastroProdutos/img/favico.png" type="image/x-icon">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -78,15 +78,17 @@
             top: 20px;
             left: 20px;
             width: 100px;
-            
         }
-        .desc{
+
+        .desc {
             margin-left: -300px;
         }
-        .desc1{
+
+        .desc1 {
             margin-left: -230px;
         }
-        .logo{
+
+        .logo {
             width: 200px;
             cursor: pointer;
         }
@@ -94,54 +96,59 @@
 </head>
 
 <body>
-    <a href="../inicio//home.html">
-    <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo">
+    <a href="../inicio/home.html">
+        <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo">
     </a>
     <div class="container">
-        <h1>LOGIN</h1>  
-<br><br>
+        <h1>LOGIN</h1>
+        <br><br>
 
+        <form method="POST" action="../tela-bloqueio/validar.php">
+            <p class="desc1">Nome de Usuário:</p>
+            <input type="text" name="username" placeholder="Nome de usuário" required>
+            <br>
+            <p class="desc">Senha:</p>
+            <input type="password" name="password" placeholder="Senha" required>
+            <br>
+            <br>
+            <button type="submit">Entrar</button>
+        </form>
 
-<form method="POST" action="../tela-bloqueio/validar.php">
-    <P class="desc1">Nome de Usuário:</P>
-    <input type="text" name="username" placeholder="Nome de usuário" required>
-    <br>
-    <p class="desc">Senha:</p>
-    <input type="password" name="password" placeholder="Senha" required>
-    <br>
-    <br>
-    <button type="submit">Entrar<a></button>
-</form>
+        <p>Ainda não tem uma conta? <a href="cadastro.php">Cadastrar-se</a></p>
 
-<p>Ainda não tem uma conta? <a href="cadastro.php">Cadastrar-se</a></p>
+        <?php
+        session_start();
+        include('../inc/conexao.php');
 
-<?php include ('../inc/conexao.php');
+        if (isset($_POST['username']) && isset($_POST['password'])) {
+            $username = $mysqli->real_escape_string($_POST['username']);
+            $password = $mysqli->real_escape_string($_POST['password']);
 
-if(isset($_POST['email']) || isset($_POST['senha'])){
+            if (empty($username)) {
+                echo "Preencha o nome de usuário!";
+            } elseif (empty($password)) {
+                echo "Preencha a senha!";
+            } else {
+                $sql_code = "SELECT * FROM usuarios WHERE username = '$username' AND password = '$password'";
+                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 
-if(strlen($_POST['email']) == 0){
-    echo "Preencha seu e-mail!";
-}else if(strlen($_POST['senha']) == 0){
-    echo "Preencha sua senha";
-}else {
-    $email = $myqli->real_escape_sting($_POST['email']);
-    $senha = $myqli->real_escape_sting($_POST['senha']);
+                $quantidade = $sql_query->num_rows;
 
-    $sql_code = "SELECT * FROM usuarios WHERE email = '$email'AND senha = '$senha'";
-    $sql_query->query($sql_code) or die("Falha na execução do código SQL: " . $myqli->error);
-    
-    $quantidade = $sql_query->num_rows;
+                if ($quantidade == 1) {
+                    $usuario = $sql_query->fetch_assoc();
 
-    if($quantidade == 1){
-        $usuario = $myqli_quey->fetch_assoc();
+                    $_SESSION['user'] = $usuario['id'];
+                    $_SESSION['name'] = $usuario['nome'];
 
-        if(!isset($_SESSION)){
-            session_start();
+                    header("Location: dashboard.php");
+                    exit();
+                } else {
+                    echo "Falha ao logar! Nome de usuário ou senha incorretos";
+                }
+            }
         }
-        $_SESSION['user'] = $usuario ['id'];
-        $_SESSION['name'] = $usuario['nome']
-    }else{ echo "Falha ao logar! E-mail ou Senha incorretos"} }
-}
-?>
+        ?>
+    </div>
 </body>
+
 </html>
