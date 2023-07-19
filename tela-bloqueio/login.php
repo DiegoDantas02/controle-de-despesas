@@ -29,38 +29,6 @@
 
         <p>Ainda não tem uma conta? <a href="cadastro.php">Cadastrar-se</a></p>
 
-        <?php
-        session_start();
-        include('../inc/conexao.php');
-
-        if (isset($_POST['username']) && isset($_POST['password'])) {
-            $username = $mysqli->real_escape_string($_POST['username']);
-            $password = $mysqli->real_escape_string($_POST['password']);
-
-            if (empty($username)) {
-                echo "Preencha o nome de usuário!";
-            } elseif (empty($password)) {
-                echo "Preencha a senha!";
-            } else {
-                $sql_code = "SELECT * FROM usuarios WHERE username = '$username' AND password = '$password'";
-                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-
-                $quantidade = $sql_query->num_rows;
-
-                if ($quantidade == 1) {
-                    $usuario = $sql_query->fetch_assoc();
-
-                    $_SESSION['user'] = $usuario['id'];
-                    $_SESSION['name'] = $usuario['nome'];
-
-                    header("Location: dashboard.php");
-                    exit();
-                } else {
-                    echo "Falha ao logar! Nome de usuário ou senha incorretos";
-                }
-            }
-        }
-        ?>
     </div>
 </body>
 

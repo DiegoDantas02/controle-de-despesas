@@ -4,4 +4,7 @@ $bd_senha = "";
 $bd_servidor = "localhost";
 $bd_banco = "projeto_software";
 $conexao = mysqli_connect($bd_servidor, $bd_usuario, $bd_senha, $bd_banco);
+if (!$conexao) {
+    die("Erro na conexão: " . mysqli_connect_error());
+}
 ?>
