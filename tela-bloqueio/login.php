@@ -1,5 +1,5 @@
 <?php
-// Arquivo: validar.php
+// Arquivo: login.php
 
 // Verifica se a requisição foi feita através do método POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
