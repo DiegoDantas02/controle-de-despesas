@@ -2,7 +2,7 @@
 
 $usuario = 'root';
 $senha = '';
-$database = 'login';
+$database = 'projeto_software)';
 $host = 'localhost';
 
 $mysqli = new mysqli($host, $usuario, $senha, $database);
@@ -10,3 +10,4 @@ $mysqli = new mysqli($host, $usuario, $senha, $database);
 if($mysqli->error) {
     die("Falha ao conectar ao banco de dados: " . $mysqli->error);
 }
+?>
