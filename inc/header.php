@@ -12,7 +12,7 @@
 
 <body >
  
-  <header style="margin-top: -165px;">
+  <header position: fixed;>
   <a href="../inicio/home.php">
     <img src="../img/logo.png" alt="Logo">
     </a>
