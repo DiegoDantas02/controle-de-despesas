@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         require_once('../inc/conexao.php');
 
         // Obtém os dados do formulário e faz o tratamento para evitar injeção de SQL
-        $username = $conn->real_escape_string($_POST['username']);
+        $usuario = $conn->real_escape_string($_POST['usuario']);
         $password = $conn->real_escape_string($_POST['password']);
 
         // Consulta SQL para verificar se o usuário existe no banco de dados

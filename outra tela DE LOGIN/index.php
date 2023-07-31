@@ -1,18 +1,18 @@
 <?php
 include('conexao.php');
 
-if(isset($_POST['email']) || isset($_POST['senha'])) {
+if(isset($_POST['email']) || isset($_POST['password'])) {
 
     if(strlen($_POST['email']) == 0) {
         echo "Preencha seu e-mail";
-    } else if(strlen($_POST['senha']) == 0) {
+    } else if(strlen($_POST['password']) == 0) {
         echo "Preencha sua senha";
     } else {
 
         $email = $mysqli->real_escape_string($_POST['email']);
-        $senha = $mysqli->real_escape_string($_POST['senha']);
+        $password = $mysqli->real_escape_string($_POST['password']);
 
-        $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+        $sql_code = "SELECT * FROM projeto WHERE usuario = '$usuario' AND senha = '$password'";
         $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 
         $quantidade = $sql_query->num_rows;
