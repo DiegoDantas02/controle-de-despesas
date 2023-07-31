@@ -29,7 +29,7 @@
             
             <button type="submit"> Entrar</button>
             <br> <br>
-            <button> <a href="../inicio/home.php" style="text-decoration: none;">Teste</a></button>
+            <button> <a href="../inicio/home.php" style="text-decoration: none;">Conhecer Software! </a></button>
           
         </form>
 
