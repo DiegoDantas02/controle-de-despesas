@@ -1,56 +1,4 @@
-<?php
-// Arquivo: login.php
 
-// Verifica se a requisição foi feita através do método POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verifica se os campos do formulário foram preenchidos
-    if (empty($_POST['usuario']) || empty($_POST['password'])) {
-        echo "Por favor, preencha todos os campos.";
-    } else {
-        // Inclui o arquivo de conexão com o banco de dados
-        require_once('../inc/conexao.php');
-
-        // Obtém os dados do formulário e faz o tratamento para evitar injeção de SQL
-        $usuario = $conn->real_escape_string($_POST['usuario']);
-        $password = $conn->real_escape_string($_POST['password']);
-
-        // Consulta SQL para verificar se o usuário existe no banco de dados
-        $query = "SELECT * FROM projeto WHERE username='$usuario'";
-        $result = $conn->query($query);
-
-        // Verifica se ocorreu algum erro na consulta
-        if (!$result) {
-            die("Erro na consulta: " . $conn->error);
-        }
-
-        // Verifica se o usuário existe no banco de dados
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $hashed_password = $row['hashed_password'];
-
-            // Verifica a senha usando password_verify()
-            if (password_verify($password, $hashed_password)) {
-                // Redireciona para a página home.php quando o login for bem-sucedido
-                header("Location: ../inicio/home.php");
-                exit();
-            } else {
-                // Mostra mensagem de erro na tela de login se a senha estiver incorreta
-                echo "Usuário ou senha incorretos.";
-            }
-        } else {
-            // Mostra mensagem de erro na tela de login se o usuário não existir
-            echo "Usuário ou senha incorretos.";
-        }
-
-        // Fecha a conexão com o banco de dados
-        $conn->close();
-    }
-} else {
-    // Redireciona para a página de login caso alguém tente acessar diretamente esse arquivo
-    header("Location: ../tela-bloqueio/login.php");
-    exit();
-}
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -63,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <a href="../inicio/home.html">
+    <a href="../tela-bloqueio/login.php">
         <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo">
     </a>
     <div class="container">
@@ -78,7 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" name="password" placeholder="Senha" required>
             <br>
             <br>
-            <button type="submit">Entrar</button>
+            
+            <button type="submit"> Entrar</button>
+            <br> <br>
+            <button> <a href="../inicio/home.php" style="text-decoration: none;">Teste</a></button>
+          
         </form>
 
         <p>Ainda não tem uma conta? <a href="cadastro.php">Cadastrar-se</a></p>

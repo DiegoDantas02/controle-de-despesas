@@ -10,12 +10,16 @@
     <title>Controle de despesas</title>
 </head>
 
-<body>
+<body >
+ 
   <header style="margin-top: -165px;">
+  <a href="../inicio/home.php">
     <img src="../img/logo.png" alt="Logo">
+    </a>
     <div class="buttons">
-      <a href="../inicio/home.html" >ínicio</a>
+      <a href="../inicio/home.php " >ínicio</a>
       <a href="../tela-bloqueio/login.php">Sair</a>
+   
     </div>
   </header>
 </body>

@@ -1,10 +1,10 @@
 <?php
-$usuario = $_POST["login"];
+$usuario = $_POST["usuario"];
 $senha = $_POST["password"];
 
 if($usuario == "fortuna" && $senha == 1234){
-    header("location:home.php");
+    header("Location: home.php");
 }else{
-    header("location: login.php");
+    header("Location: login.php");
 }
 ?>
