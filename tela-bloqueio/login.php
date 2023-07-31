@@ -4,7 +4,7 @@
 // Verifica se a requisição foi feita através do método POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verifica se os campos do formulário foram preenchidos
-    if (empty($_POST['username']) || empty($_POST['password'])) {
+    if (empty($_POST['usuario']) || empty($_POST['password'])) {
         echo "Por favor, preencha todos os campos.";
     } else {
         // Inclui o arquivo de conexão com o banco de dados
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password = $conn->real_escape_string($_POST['password']);
 
         // Consulta SQL para verificar se o usuário existe no banco de dados
-        $query = "SELECT * FROM db_login WHERE username='$username'";
+        $query = "SELECT * FROM projeto WHERE username='$usuario'";
         $result = $conn->query($query);
 
         // Verifica se ocorreu algum erro na consulta
