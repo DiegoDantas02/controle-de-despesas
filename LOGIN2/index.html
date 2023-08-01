@@ -4,39 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Tela de Login - Finanças</title>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <!-- <div class="logo">
-            <img src="../img/logo.png" alt="Logo da empresa" class="logo-img">
-        </div> -->
-        <div class="login-container">
-            <form action="login.php" method="post">
-                <h2>Login</h2>
-                <label for="username">Usuário:</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Entrar</button>
-                <a href="reset_password.php">Esqueci a senha</a>
-            </form>
-            <button class="toggle-button" onclick="toggleSignup()">Cadastre-se</button>
-        </div>
-        <div class="signup-container">
-            <h2>Cadastre-se</h2>
-            <form action="register.php" method="post">
-                <label for="new_username">Usuário:</label>
-                <input type="text" id="new_username" name="new_username" required>
-                <label for="new_password">Senha:</label>
-                <input type="password" id="new_password" name="new_password" required>
-                <button type="submit">Cadastrar</button>
-                <button class="toggle-button" onclick="toggleSignup()">Voltar</button>
-            </form>
+    <div class="gradient-background">
+        <div class="container">
+            <div class="login-container">
+                
+                <form action="login.php" method="post">
+                    <h2>Login</h2>
+                    <label for="username" class="label">Usuário:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password" class="label">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit" class="login-button">Entrar</button>
+                    <a href="reset_password.php" class="forgot-password-link">Esqueci a senha</a>
+                </form>
+                <button class="toggle-button" onclick="toggleSignup()">Cadastre-se</button>
+            </div>
+            <div class="signup-container">
+                <h2>Cadastre-se</h2>
+                <form action="register.php" method="post">
+                    <label for="new_username" class="label">Usuário:</label>
+                    <input type="text" id="new_username" name="new_username" required>
+                    <label for="new_password" class="label">Senha:</label>
+                    <input type="password" id="new_password" name="new_password" required>
+                    <button type="submit" class="signup-button">Cadastrar</button>
+                    <button class="toggle-button" onclick="toggleSignup()">Voltar</button>
+                </form>
+            </div>
         </div>
     </div>
 
