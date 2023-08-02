@@ -1,115 +1,90 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+    font-family: "Arial", sans-serif; /* Define a fonte do texto para Arial ou uma fonte sans-serif */
+    margin: 0; /* Remove as margens padrão do corpo do documento */
 }
 
 .gradient-background {
-    background: linear-gradient(to right, #4B5320, #1CB5E0);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* Cria um gradiente de fundo com três cores em degradê horizontal */
+    height: 100vh; /* Define a altura da div para ocupar a altura completa da tela (viewport) */
+    display: flex; /* Habilita o modelo flexbox para posicionar os elementos filhos */
+    flex-direction: column; /* Define a direção dos elementos filhos como coluna */
+    justify-content: flex-start; /* Alinha os elementos filhos no início (topo) da div */
+    align-items: center; /* Centraliza os elementos filhos horizontalmente */
+    padding-top: 30px; /* Adiciona um espaçamento (padding) no topo da div para posicionar o logo */
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-}
-
-.login-container,
-.signup-container {
-    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Define a cor de fundo com transparência para a div container */
+    border-radius: 10px; /* Adiciona cantos arredondados na div container */
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); /* Adiciona sombras à div container */
+    display: grid; /* Habilita o modelo grid para posicionar os elementos filhos */
+    grid-template-columns: 1fr; /* Define uma coluna para os elementos filhos ocuparem todo o espaço disponível */
+    gap: 20px; /* Adiciona um espaçamento entre os elementos filhos */
+    position: relative; /* Define a posição da div container como relativa para posicionamento absoluto dos elementos filhos */
+    width: 100%; /* Define a largura da div container como 100% */
+    max-width: 400px; /* Define a largura máxima da div container como 400 pixels */
+    padding: 30px; /* Adiciona um espaçamento interno (padding) na div container */
 }
 
 .logo-img {
-    width: 120px;
-    height: 90px;
-    margin-bottom: 20px;
+    width: 120px; /* Define a largura da imagem do logo */
+    height: 80px; /* Define a altura da imagem do logo */
+    margin-left: -730px; /* Desloca a imagem do logo para a esquerda em 730 pixels */
+    margin-top: -30px; /* Desloca a imagem do logo para cima em 30 pixels */
 }
 
 h2 {
-    font-size: 24px;
-    color: #1CB5E0;
-    margin: 0;
+    font-size: 24px; /* Define o tamanho da fonte do título h2 */
+    color: #1CB5E0; /* Define a cor do texto do título h2 */
+    margin: 0; /* Remove as margens padrão do título h2 */
+    text-align: center; /* Centraliza o título h2 horizontalmente */
 }
 
 .label {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
+    font-size: 16px; /* Define o tamanho da fonte dos rótulos (labels) */
+    font-weight: bold; /* Define o peso da fonte dos rótulos como negrito */
+    color: #333; /* Define a cor do texto dos rótulos */
 }
 
 input[type="text"],
 input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    width: 100%; /* Define a largura dos campos de entrada de texto como 100% */
+    padding: 12px; /* Adiciona um espaçamento interno (padding) nos campos de entrada */
+    margin-bottom: 20px; /* Adiciona um espaçamento inferior (margin) nos campos de entrada */
+    border: 1px solid #ccc; /* Define uma borda de 1 pixel sólida com a cor cinza (#ccc) para os campos de entrada */
+    border-radius: 5px; /* Adiciona cantos arredondados nos campos de entrada */
+    font-size: 16px; /* Define o tamanho da fonte nos campos de entrada */
 }
 
-.login-button,
-.signup-button {
-    background-color: #4B5320; /* Verde militar */
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease-in-out;
+.login-button {
+    background-color: #4CAF50; /* Define a cor de fundo do botão de login */
+    color: #fff; /* Define a cor do texto do botão de login como branco */
+    padding: 12px 20px; /* Adiciona um espaçamento interno (padding) vertical e horizontal no botão de login */
+    border: none; /* Remove a borda do botão de login */
+    border-radius: 5px; /* Adiciona cantos arredondados no botão de login */
+    font-size: 16px; /* Define o tamanho da fonte no botão de login */
+    font-weight: bold; /* Define o peso da fonte do botão de login como negrito */
+    cursor: pointer; /* Altera o cursor do mouse ao passar sobre o botão de login */
+    width: 100%; /* Define a largura do botão de login como 100% */
+    transition: background-color 0.3s ease-in-out; /* Adiciona uma transição suave na mudança da cor de fundo do botão de login */
 }
 
-.login-button:hover,
-.signup-button:hover {
-    background-color: #3B3F0A; /* Tom mais escuro de verde militar */
+.login-button:hover {
+    background-color: #45a049; /* Define a cor de fundo do botão de login ao passar o mouse sobre ele */
+}
+
+.signup-link {
+    display: block; /* Define o link de cadastro como um elemento de bloco (ocupando a largura completa) */
+    font-size: 14px; /* Define o tamanho da fonte do link de cadastro */
+    color: #1CB5E0; /* Define a cor do texto do link de cadastro */
+    text-decoration: none; /* Remove o sublinhado padrão do link de cadastro */
+    margin-top: 10px; /* Adiciona um espaçamento superior (margin) no link de cadastro */
 }
 
 .forgot-password-link {
-    display: block;
-    font-size: 14px;
-    color: #1CB5E0;
-    text-decoration: none;
-    margin-top: 10px;
-}
-
-.container.signup-mode {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.container.signup-mode .signup-container {
-    display: block;
-}
-
-.container.signup-mode .login-container {
-    display: none;
-}
-
-.toggle-button {
-    background-color: #1CB5E0;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease-in-out;
-    margin-top: 10px;
-}
-
-.toggle-button:hover {
-    background-color: #005B9A;
+    display: block; /* Define o link de redefinição de senha como um elemento de bloco (ocupando a largura completa) */
+    font-size: 14px; /* Define o tamanho da fonte do link de redefinição de senha */
+    color: #1CB5E0; /* Define a cor do texto do link de redefinição de senha */
+    text-decoration: none; /* Remove o sublinhado padrão do link de redefinição de senha */
+    margin-top: 10px; /* Adiciona um espaçamento superior (margin) no link de redefinição de senha */
 }
