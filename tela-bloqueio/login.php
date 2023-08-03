@@ -1,3 +1,31 @@
+<?php
+include "../inc/conexao.php";
+
+if (isset($_POST['usuario']) && isset($_POST['senha'])) {
+    $usuario = $conexao->real_escape_string($_POST['usuario']);
+    $senha = $conexao->real_escape_string($_POST['senha']);
+
+    // Consulta na tabela 'login'
+    $sql = "SELECT * FROM logim WHERE usuario = '$usuario' AND senha = '$senha'";
+    $resultado = mysqli_query($conexao, $sql) or die("Falha na execução do código SQL: " . $conexao->error);
+
+    if (mysqli_num_rows($resultado) > 0) {
+        $login = $resultado->fetch_assoc();
+
+        // Iniciar a sessão
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION["usuario"] = $usuario;
+
+        // Redirecionar para a página de destino
+        header('Location: ../inicio/home.php');
+        exit();
+    } else {
+        echo "Falha ao logar! Usuario ou senha inválidos";
+    }
+}
+?>
 <!DOCTYPE html>
 <!-- Declaração do tipo de documento como HTML5 -->
 
@@ -13,7 +41,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Define a escala inicial do viewport como 1.0, permitindo que o conteúdo se ajuste ao tamanho da tela do dispositivo -->
 
-    <link rel="shortcut icon" href="../02cadastroProdutos/img/favico.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
     <!-- Cria um ícone de atalho na barra de endereço usando a imagem "favico.png" na pasta "../02cadastroProdutos/img/" -->
 
     <link rel="stylesheet" href="../css/login.css">
@@ -38,13 +66,13 @@
 
         <br><br>
 
-        <form method="POST" action="../tela-bloqueio/validar.php">
+        <form method="POST" >
             <!-- Cria um formulário com o método POST e redireciona para "../tela-bloqueio/validar.php" após o envio -->
 
             <p class="desc1">Nome de Usuário:</p>
             <!-- Cria um parágrafo com a classe "desc1" e texto "Nome de Usuário:" -->
 
-            <input type="text" name="username" placeholder="Nome de usuário" required>
+            <input type="text" name="usuario" placeholder="Nome de usuário" required>
             <!-- Cria uma caixa de texto para o nome de usuário com o atributo "required" indicando que é obrigatório preencher -->
 
             <br>
@@ -52,7 +80,7 @@
             <p class="desc">Senha:</p>
             <!-- Cria um parágrafo com a classe "desc" e texto "Senha:" -->
 
-            <input type="password" name="password" placeholder="Senha" required>
+            <input type="password" name="senha" placeholder="Senha" required>
             <!-- Cria uma caixa de texto para a senha com o atributo "required" indicando que é obrigatório preencher -->
 
             <br>
