@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root{
+    /* ==== cores ===*/
+    --panel-color:#fff;
+    --black-light-color:#707070;
+    --border-color:#e6e5e5;
+    --toggle-color:#ddd;
+    --title-icon-color:#fff;
+
+}
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    
+}
