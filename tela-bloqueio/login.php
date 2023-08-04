@@ -6,7 +6,7 @@ if (isset($_POST['usuario']) && isset($_POST['senha'])) {
     $senha = $conexao->real_escape_string($_POST['senha']);
 
     // Consulta na tabela 'login'
-    $sql = "SELECT * FROM logim WHERE usuario = '$usuario' AND senha = '$senha'";
+    $sql = "SELECT * FROM t_cadastro WHERE usuario = '$usuario' AND senha = '$senha'";
     $resultado = mysqli_query($conexao, $sql) or die("Falha na execução do código SQL: " . $conexao->error);
 
     if (mysqli_num_rows($resultado) > 0) {
