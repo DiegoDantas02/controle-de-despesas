@@ -1,17 +1,13 @@
 <?php
 include "../inc/conexao.php";
 
-$nome = $_POST["nome"];
-$email = $_POST["usuario"];
-$telefone = $_POST["telefone"];
-$endereco = $_POST["endereco"];
-$bairro = $_POST["bairro"];
-$cidade = $_POST["cidade"];
-$estado = $_POST["estado"];
-$cnpj_cpf = $_POST["cnpj_cpf"];
+$email = $_POST["email"];
 $senha = $_POST["senha"];
+$contato = $_POST["contato"];
+$nome_empresa = $_POST["nome_empresa"];
 
-$sql = "insert into ongs(nome, email, telefone, endereco, bairro, cidade, estado, cnpj_cpf, senha) values('$nome', '$email', '$telefone', '$endereco', '$bairro', '$cidade', '$estado', '$cnpj_cpf', '$senha')";
+
+$sql = "insert into ongs( email, contato,  senha, nome_empresa) values( '$email', '$senha','$contato', '$nome_empresa')";
 
 mysqli_query($conexao, $sql);
 mysqli_close($conexao);

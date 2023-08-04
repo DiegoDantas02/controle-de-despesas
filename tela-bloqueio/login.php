@@ -1,12 +1,16 @@
 <?php
 include "../inc/conexao.php";
 
-if (isset($_POST['usuario']) && isset($_POST['senha'])) {
-    $usuario = $conexao->real_escape_string($_POST['usuario']);
+if (isset($_POST['email']) && isset($_POST['senha'])) {
+    $email = $conexao->real_escape_string($_POST['email']);
     $senha = $conexao->real_escape_string($_POST['senha']);
 
     // Consulta na tabela 'login'
+<<<<<<< Updated upstream
     $sql = "SELECT * FROM t_cadastro WHERE usuario = '$usuario' AND senha = '$senha'";
+=======
+    $sql = "SELECT * FROM t_login WHERE email = '$email' AND senha = '$senha'";
+>>>>>>> Stashed changes
     $resultado = mysqli_query($conexao, $sql) or die("Falha na execução do código SQL: " . $conexao->error);
 
     if (mysqli_num_rows($resultado) > 0) {
@@ -16,7 +20,7 @@ if (isset($_POST['usuario']) && isset($_POST['senha'])) {
         if (!isset($_SESSION)) {
             session_start();
         }
-        $_SESSION["usuario"] = $usuario;
+        $_SESSION["email"] = $email;
 
         // Redirecionar para a página de destino
         header('Location: ../inicio/home.php');
@@ -72,7 +76,7 @@ if (isset($_POST['usuario']) && isset($_POST['senha'])) {
             <p class="desc1">Nome de Usuário:</p>
             <!-- Cria um parágrafo com a classe "desc1" e texto "Nome de Usuário:" -->
 
-            <input type="text" name="usuario" placeholder="Nome de usuário" required>
+            <input type="text" name="" placeholder="Nome de usuário" required>
             <!-- Cria uma caixa de texto para o nome de usuário com o atributo "required" indicando que é obrigatório preencher -->
 
             <br>
