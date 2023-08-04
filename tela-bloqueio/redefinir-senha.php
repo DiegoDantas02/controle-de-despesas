@@ -1,89 +1,84 @@
-<?php
-// Arquivo: redefinir-senha.php
-
-// Verifica se a requisição foi feita através do método POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verifica se os campos do formulário foram preenchidos
-    if (empty($_POST['username']) || empty($_POST['old_password']) || empty($_POST['new_password'])) {
-        echo "Por favor, preencha todos os campos.";
-    } else {
-        // Inclui o arquivo de conexão com o banco de dados
-        require_once 'conexao.php';
-
-        // Obtém os dados do formulário e faz o tratamento para evitar injeção de SQL
-        $username = $conexao->real_escape_string($_POST['username']);
-        $oldPassword = $conexao->real_escape_string($_POST['old_password']);
-        $newPassword = $conexao->real_escape_string($_POST['new_password']);
-
-        // Consulta SQL para verificar se o usuário existe no banco de dados
-        $sql = "SELECT * FROM tabela_usuarios WHERE username = '$username' AND password = '$oldPassword'";
-        $result = $conexao->query($sql);
-
-        // Verifica se ocorreu algum erro na consulta
-        if (!$result) {
-            die("Erro na consulta: " . $conexao->error);
-        }
-
-        // Verifica se o usuário existe no banco de dados e se a senha antiga está correta
-        if ($result->num_rows > 0) {
-            // Atualiza a senha do usuário no banco de dados
-            $updateSql = "UPDATE tabela_usuarios SET password = '$newPassword' WHERE username = '$username'";
-            if ($conexao->query($updateSql)) {
-                // Senha atualizada com sucesso
-                echo "Senha atualizada com sucesso!";
-            } else {
-                // Ocorreu um erro ao atualizar a senha
-                echo "Erro ao atualizar a senha: " . $conexao->error;
-            }
-        } else {
-            // Nome de usuário e/ou senha antiga incorretos
-            echo "Nome de usuário e/ou senha antiga incorretos. Verifique os dados e tente novamente.";
-        }
-
-        // Fecha a conexão com o banco de dados
-        $conexao->close();
-    }
-}
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<!-- Declaração do tipo de documento como HTML5 -->
+
+<html lang="pt-br">
+<!-- Início da tag <html> com o atributo de linguagem "pt-br" (Português do Brasil) -->
 
 <head>
+    <!-- Início da seção <head> que contém metadados, links para recursos e informações da página -->
+
     <meta charset="UTF-8">
+    <!-- Declara o conjunto de caracteres como UTF-8 (Unicode Transformation Format 8 bits) -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/redefinir-senha.css">
+    <!-- Define a escala inicial do viewport como 1.0, permitindo que o conteúdo se ajuste ao tamanho da tela do dispositivo -->
+
+    <link rel="shortcut icon" href="../02cadastroProdutos/img/favico.png" type="image/x-icon">
+    <!-- Define o ícone da página, o arquivo "favico.png" localizado na pasta "../02cadastroProdutos/img/" -->
+
+    <link rel="stylesheet" href="../css/login.css">
+    <!-- Importa o arquivo de estilos "login.css" localizado na pasta "../css/" -->
 
 </head>
+<!-- Fim da seção <head> -->
 
 <body>
-    <div>
+    <!-- Início da seção <body> que contém o conteúdo visível da página -->
+
+    <a href="../tela-bloqueio/login.php">
+        <!-- Cria um link (âncora) para a página "login.php" localizada na pasta "../tela-bloqueio/" -->
+
         <img src="../img/logo.png" alt="imagem do logo da empresa" class="logo">
-    </div>
+        <!-- Cria uma imagem do logo da empresa com o atributo "alt" indicando a descrição da imagem e a classe "logo" para estilização -->
+
+    </a>
+    <!-- Fim do link (âncora) -->
 
     <div class="container">
-        <h1><strong>REDEFINIR SENHA</strong></h1>
-        <br>
-        <br>
+        <!-- Cria uma div com a classe "container" -->
 
-        <form method="POST" action="redefinir-senha.php">
-            <p class="descrição1">Nome de Usuário:</p>
-            <input type="text" name="username" placeholder="Fortuna Company" required>
+        <h1>LOGIN</h1>
+        <!-- Cria um cabeçalho h1 com o texto "LOGIN" -->
+
+        <br><br>
+
+        <form method="POST" action="../tela-bloqueio/validar.php">
+            <!-- Cria um formulário com o método POST e redireciona para "validar.php" após o envio -->
+
+            <p class="desc1">Nome de Usuário:</p>
+            <!-- Cria um parágrafo com a classe "desc1" e texto "Nome de Usuário:" -->
+
+            <input type="text" name="username" placeholder="Nome de usuário" required>
+            <!-- Cria uma caixa de texto para o nome de usuário com o atributo "required" indicando que é obrigatório preencher -->
+
             <br>
-            <p class="descrição">Antiga Senha:</p>
-            <input type="password" name="old_password" placeholder="Senha" required>
-            <br>
-            <p class="descrição">Nova Senha:</p>
-            <input type="password" name="new_password" placeholder="Senha" required>
-            <br>
-            <br>
+
+            <p class="desc">Senha:</p>
+            <!-- Cria um parágrafo com a classe "desc" e texto "Senha:" -->
+
+            <input type="password" name="password" placeholder="Senha" required>
+            <!-- Cria uma caixa de texto para a senha com o atributo "required" indicando que é obrigatório preencher -->
+
+            <br><br>
+
             <button type="submit">Entrar</button>
+            <!-- Cria um botão de submissão do formulário com o texto "Entrar" -->
+
+            <br><br>
+
+            <button> <a href="../inicio/home.php" style="text-decoration: none;">Conhecer Software! </a></button>
+            <!-- Cria um botão com um link (âncora) para a página "home.php" localizada na pasta "../inicio/" com o texto "Conhecer Software!" e estilização para remoção do sublinhado -->
+
         </form>
 
-        <p>Já tem conta? <a href="login.php">Efetuar Login</a></p>
+        <p>Ainda não tem uma conta? <a href="cadastro.php">Cadastrar-se</a></p>
+        <!-- Cria um parágrafo com um link (âncora) para a página "cadastro.php" com o texto "Cadastrar-se" -->
 
     </div>
+    <!-- Fim da div com a classe "container" -->
 
 </body>
+<!-- Fim da seção <body> -->
 
 </html>
+<!-- Fim do documento HTML -->
