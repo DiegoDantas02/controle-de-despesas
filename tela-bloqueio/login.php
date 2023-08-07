@@ -6,11 +6,9 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     $senha = $conexao->real_escape_string($_POST['senha']);
 
     // Consulta na tabela 'login'
-<<<<<<< Updated upstream
-    $sql = "SELECT * FROM t_cadastro WHERE usuario = '$usuario' AND senha = '$senha'";
-=======
+
     $sql = "SELECT * FROM t_login WHERE email = '$email' AND senha = '$senha'";
->>>>>>> Stashed changes
+
     $resultado = mysqli_query($conexao, $sql) or die("Falha na execução do código SQL: " . $conexao->error);
 
     if (mysqli_num_rows($resultado) > 0) {
